@@ -4,5 +4,7 @@
   "packagerPort": 19000,
   "expoServerNgrokUrl": "https://cq-iff.santiagoflynn.reactnativemarketplace.exp.direct",
   "packagerNgrokUrl": "https://packager.cq-iff.santiagoflynn.reactnativemarketplace.exp.direct",
-  "ngrokPid": 11220
+  "ngrokPid": 18244,
+  "packagerPid": null,
+  "webpackServerPort": null
 }
