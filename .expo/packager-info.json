@@ -1,10 +1,10 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": null,
-  "packagerPort": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "expoServerPort": 19000,
+  "packagerPort": 19000,
+  "expoServerNgrokUrl": "https://cq-iff.santiagoflynn.reactnativemarketplace.exp.direct",
+  "packagerNgrokUrl": "https://packager.cq-iff.santiagoflynn.reactnativemarketplace.exp.direct",
+  "ngrokPid": 9840,
   "packagerPid": null,
   "webpackServerPort": null
 }

@@ -1,7 +1,6 @@
 import 'react-native-gesture-handler'
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, Tabnav } from 'react-native';
+import { StyleSheet, Text, View, Tabnav, StatusBar,Button } from 'react-native';
 import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -10,7 +9,8 @@ import  HomeScreen from './src/Screens/Tabs/HomeScreen'
 import  BookmarksScreen from './src/Screens/Tabs/BookmarksScreen'
 import  NotificationsScreen from './src/Screens/Tabs/NotificationsScreen'
 import  SettingsScreen from './src/Screens/Tabs/SettingsScreen'
-import { Header } from 'react-native/Libraries/NewAppScreen';
+import { SafeAreaView } from 'react-native';
+
 const stack = createStackNavigator();
 const tab = createBottomTabNavigator();
 function myTabs(){
@@ -47,24 +47,62 @@ function myTabs(){
   );
 };
 export default function App() {
+
+  const [searchQuery, setSearchQuery] = React.useState('');
+
+  const onChangeSearch = query => setSearchQuery(query);
+
   return (
-   
-      <NavigationContainer> 
+    <NavigationContainer> 
+        <SafeAreaView style={styles.androidSafeArea}/>
+        
+        <StatusBar hidden={false}/>
+        <View style={styles.searchBarIconsContainer}>
+        <View style={styles.searchBarContainer}>
+        <SearchBar
+          placeholder="Search"
+          onChangeText={onChangeSearch}
+          value={searchQuery}
+          containerStyle={styles.searchBar}
+          renderToHardwareTextureAndroid
+         />
+        </View>
+        <View style={styles.iconsContainer}>
+            
+          <Button title='fav' />
+          <Icon name='home' type='material'/>
+          <Icon name='home' type='material'/>
+        </View>
+        </View>
         <stack.Navigator>
-          <stack.Screen name="home" component={myTabs} options={{title:null, headerTransparent:'true'}}/>
+          <stack.Screen 
+            name="Main" 
+            component={myTabs} 
+            options={{title:null, headerTransparent:'true'}}/>
         </stack.Navigator>
-        <StatusBar hidden={true}/>
+
       </NavigationContainer>
-      
   );
 }
 
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  androidSafeArea: {
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0
+  },
+  searchBarIconsContainer: {
+    backgroundColor: '#FDD7E4',
+    flexDirection:'row'
+  },
+  searchBarContainer: {
+    flexGrow:1
+  },
+  iconsContainer: {
+    flexDirection:'row'
+  },
+  searchBar: {
+    backgroundColor: '#FDD7E4',
+    borderTopColor: '#FDD7E4',
+    borderBottomColor: '#FDD7E4',
   },
 });

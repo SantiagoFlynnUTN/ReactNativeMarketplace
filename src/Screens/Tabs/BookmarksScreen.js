@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Tabnav } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 
-function BookmarksScreen(props) {
+function BookmarksScreen({navigation}) {
     return (
         <View style={styles.container}>
         <Text>BookmarksScreen</Text>
